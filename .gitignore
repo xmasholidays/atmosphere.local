@@ -1,0 +1,9 @@
+venv
+*.pyc
+*.zip
+.DS_Store
+*.sqlite3
+audio/
+*.rdb
+.coverage
+filer_public
