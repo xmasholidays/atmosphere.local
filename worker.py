@@ -12,6 +12,8 @@ class RequestConsumer(object):
             self._winstance = winstance
         def onStop(self):
             self._winstance.onStop()
+            if self._winstance.is_background:
+               self._winstance.start()
 
     def __init__(self, song_path, is_background):
         self._song_path = song_path
@@ -20,6 +22,9 @@ class RequestConsumer(object):
         self._listener = RequestConsumer.Mp3Listener(self)
         self._player.attachListener(self._listener)
 
+    @property
+    def is_background(self):
+        return self._is_background
 
     def start(self):
         self._player.play(self._song_path)
@@ -49,11 +54,12 @@ class Worker(object):
                 self.onFetchingFail()
         except ConnectionError:
             self.onFetchingFail()"""
-        self.consume('/Users/astagi/w/xmasatm/audio/back.mp3', True)
-        time.sleep(5)
-        self.consume('/Users/astagi/w/xmasatm/audio/beer.mp3')
+        self.consume('/Users/astagi/w/xmasatm/audio/beer.mp3', True)
         time.sleep(3)
         self.consume('/Users/astagi/w/xmasatm/audio/cup.mp3')
+        time.sleep(10)
+        self.consume('/Users/astagi/w/xmasatm/audio/back.mp3', True)
+        time.sleep(3)
 
     def consume(self, path, is_background=False):
         consumer = RequestConsumer(path, is_background)
