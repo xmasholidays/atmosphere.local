@@ -1,3 +1,17 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Audio, Request
+
+from django.contrib import admin
+
+
+class AudioAdmin(admin.ModelAdmin):
+    pass
+
+
+class RequestAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Audio, AudioAdmin)
+admin.site.register(Request, RequestAdmin)

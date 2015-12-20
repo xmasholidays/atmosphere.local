@@ -7,3 +7,4 @@ audio/
 *.rdb
 .coverage
 filer_public
+static/
