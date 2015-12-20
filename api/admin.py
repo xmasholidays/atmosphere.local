@@ -6,11 +6,11 @@ from django.contrib import admin
 
 
 class AudioAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title',)
 
 
 class RequestAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('id', 'audio')
 
 
 admin.site.register(Audio, AudioAdmin)

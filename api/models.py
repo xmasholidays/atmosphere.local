@@ -14,6 +14,9 @@ class Audio(models.Model):
             return None
         return self.rawfile.path
 
+    def __str__(self):
+        return self.title
+
 
 class Request(models.Model):
     audio = models.ForeignKey(Audio)

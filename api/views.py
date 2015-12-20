@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from rest_framework import permissions
+from rest_framework import viewsets
+from rest_framework.decorators import list_route
+from rest_framework.response import Response
 
-# Create your views here.
+from .models import Audio, Request
+from .serializers import AudioSerializer, RequestSerializer
+
+
+class RequestViewSet(viewsets.ModelViewSet):
+    queryset = Request.objects.all()
+    serializer_class = RequestSerializer
+
+
+class AudioViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Audio.objects.all()
+    serializer_class = AudioSerializer

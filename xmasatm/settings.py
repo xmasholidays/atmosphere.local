@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'api',
     'filer',
     'mptt',
-    'easy_thumbnails'
+    'easy_thumbnails',
+    'rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
