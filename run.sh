@@ -10,6 +10,7 @@ git merge origin/master
 
 echo -e "\x1B[1;97;44mSetting up database...\x1B[0m"
 python manage.py migrate
+python create_initial_data.py
 
 echo -e "\x1B[1;97;44mEnjoy!\x1B[0m"
 python worker.py &
