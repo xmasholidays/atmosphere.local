@@ -12,4 +12,8 @@ echo -e "\x1B[1;97;44mSetting up database...\x1B[0m"
 python manage.py migrate
 
 echo -e "\x1B[1;97;44mEnjoy!\x1B[0m"
+python worker.py &
 sudo python manage.py runserver 0.0.0.0:$ATMLOCAL_PORT
+
+killall python
+killall mpg321
