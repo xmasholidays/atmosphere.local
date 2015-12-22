@@ -46,7 +46,7 @@ class Worker(object):
 
     def requestSong(self):
         try:
-            r = requests.get('http://localhost:{0}/api/v1/requests/next'.format(os.environ['ATMLOCAL_PORT']))
+            r = requests.get('http://localhost:{0}/api/v1/requests/next/'.format(os.environ['ATMLOCAL_PORT']))
             if r.status_code == 200:
                 song_json = r.json()
                 if 'audio_filepath' in song_json:
