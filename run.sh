@@ -1,10 +1,15 @@
-#sudo pip install requirements.txt
-echo "Updating software..."
+#!/bin/bash
+
+echo -e "\x1B[1;97;44mSetting up the environment...\x1B[0m"
+. env.sh
+pip install -r requirements.txt --upgrade
+
+echo -e "\x1B[1;97;44mUpdating software...\x1B[0m"
 git fetch origin
 git merge origin/master
 
-echo "Setting up database..."
+echo -e "\x1B[1;97;44mSetting up database...\x1B[0m"
 python manage.py migrate
 
-echo "Enjoy!"
-python manage.py runserver 0.0.0.0:8000
+echo -e "\x1B[1;97;44mEnjoy!\x1B[0m"
+sudo python manage.py runserver 0.0.0.0:$ATMLOCAL_PORT
