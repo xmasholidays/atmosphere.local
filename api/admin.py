@@ -6,7 +6,7 @@ from django.contrib import admin
 
 
 class AudioAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'is_background')
 
 
 class RequestAdmin(admin.ModelAdmin):

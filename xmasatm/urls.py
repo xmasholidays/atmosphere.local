@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy
+
+
+admin.site.site_header = ugettext_lazy('atmosphere.local')
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include(admin.site.urls)),
     url(r'^api/v1/', include('api.urls')),
 ]

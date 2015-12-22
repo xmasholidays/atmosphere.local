@@ -44,22 +44,26 @@ class Worker(object):
         self._run = False
 
     def requestSong(self):
-        """try:
-            r = requests.get('http://localhost:8000/api/v1/requests/next')
+        try:
+            r = requests.get('http://localhost:{0}/api/v1/requests/next'.format('8000'))
             if r.status_code == 200:
                 song_json = r.json()
-                if 'path' in song_json:
-                    RequestConsumer(song_json['path']).start()
+                if 'audio_filepath' in song_json:
+                    path = song_json['audio_filepath']
+                    is_background = song_json['is_background']
+                    print path
+                    print is_background
+                    self.consume(path, is_background)
             else:
                 self.onFetchingFail()
         except ConnectionError:
-            self.onFetchingFail()"""
-        self.consume('/Users/astagi/w/xmasatm/audio/beer.mp3', True)
+            self.onFetchingFail()
+        """self.consume('/Users/astagi/w/xmasatm/audio/beer.mp3', True)
         time.sleep(3)
         self.consume('/Users/astagi/w/xmasatm/audio/cup.mp3')
         time.sleep(10)
         self.consume('/Users/astagi/w/xmasatm/audio/back.mp3', True)
-        time.sleep(3)
+        time.sleep(3)"""
 
     def consume(self, path, is_background=False):
         consumer = RequestConsumer(path, is_background)
@@ -76,7 +80,7 @@ class Worker(object):
             old_bgconsumer.shutdown()
 
     def onFetchingFail(self):
-        time.sleep(10)
+        time.sleep(1)
         self.requestSong()
 
     def start(self):
