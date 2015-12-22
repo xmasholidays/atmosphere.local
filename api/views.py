@@ -18,6 +18,7 @@ class RequestViewSet(viewsets.ModelViewSet):
     def next(self, request):
         top_request = Request.objects.all()[0]
         serializer = RequestSerializer(top_request)
+        #top_request.delete()
         return Response(serializer.data)
 
 
