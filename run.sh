@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo -e "\x1B[1;97;44mSetting up the environment...\x1B[0m"
-. env.sh
-pip install -r requirements.txt --upgrade
-
 echo -e "\x1B[1;97;44mUpdating software...\x1B[0m"
 git fetch origin
 git merge origin/master
+
+echo -e "\x1B[1;97;44mSetting up the environment...\x1B[0m"
+. env.sh
+pip install -r requirements.txt --upgrade
 
 echo -e "\x1B[1;97;44mSetting up database...\x1B[0m"
 python manage.py migrate

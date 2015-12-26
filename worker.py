@@ -52,8 +52,6 @@ class Worker(object):
                 if 'audio_filepath' in song_json:
                     path = song_json['audio_filepath']
                     is_background = song_json['is_background']
-                    print path
-                    print is_background
                     self.consume(path, is_background)
             else:
                 self.onFetchingFail()

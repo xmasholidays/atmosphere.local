@@ -9,6 +9,6 @@ if superuser_exists:
 else:
     print ('Superuser does not exists. Creating..')
     user = User.objects.create_user('admin', password='admin')
-    user.is_superuser=True
-    user.is_staff=True
+    user.is_superuser = True
+    user.is_staff = True
     user.save()
