@@ -1,9 +1,9 @@
 from .views import RequestViewSet, AudioViewSet
 
 from django.conf.urls import url, include
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
 
-router = DefaultRouter()
+router = SimpleRouter()
 router.register(r'requests', RequestViewSet)
 router.register(r'audios', AudioViewSet)
 

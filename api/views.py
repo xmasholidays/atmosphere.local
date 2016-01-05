@@ -1,5 +1,6 @@
 from django.views.decorators.cache import never_cache
 
+from rest_framework import generics
 from rest_framework import mixins
 from rest_framework import permissions
 from rest_framework import viewsets
@@ -11,7 +12,7 @@ from .serializers import AudioSerializer, RequestSerializer
 from .permissions import IsLocalhostRequest
 
 class RequestViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin,
-                    mixins.CreateModelMixin):
+                    mixins.CreateModelMixin, viewsets.GenericViewSet):
 
     queryset = Request.objects.all()
     serializer_class = RequestSerializer
